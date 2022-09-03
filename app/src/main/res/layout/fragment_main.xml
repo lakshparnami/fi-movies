@@ -6,8 +6,8 @@
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
-        style="@style/CustomCardView"
         android:id="@+id/search_card"
+        style="@style/CustomCardView"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="8dp"
@@ -18,12 +18,12 @@
 
 
         <androidx.appcompat.widget.SearchView
-            app:searchIcon="@drawable/ic_baseline_search_24"
             android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:searchIcon="@drawable/ic_baseline_search_24" />
 
 
     </androidx.cardview.widget.CardView>

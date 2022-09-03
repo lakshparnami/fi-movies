@@ -8,19 +8,16 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/sage_green_200</item>
         <item name="colorSecondaryVariant">@color/sage_green_500</item>
-        <item name="colorOnSecondary">@color/black_700</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="android:windowBackground">@color/black_200</item>
+        <item name="searchViewStyle">@style/MySearchViewStyle</item>
+        <item name="android:searchViewStyle">@style/MySearchViewStyle</item>
+        <item name="autoCompleteTextViewStyle">@style/SearchAutoCompleteTextView</item>
+
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.FiMovies.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
 
-    <style name="Theme.FiMovies.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.FiMovies.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
