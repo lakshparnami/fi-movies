@@ -8,9 +8,7 @@ import javax.inject.Inject
 @ExperimentalCoroutinesApi
 class MainFragmentFactory
 @Inject
-constructor(
-
-) : FragmentFactory() {
+constructor() : FragmentFactory() {
 
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
         return when (className) {

@@ -15,7 +15,6 @@ constructor(
     private val cacheDataSource: CacheDataSource
 ) {
 
-
     fun getMovies(prevMovies: List<Movie>): Flow<MoviePageState> = flow {
         try {
             emit(MoviePageState.Loading(prevMovies = prevMovies))

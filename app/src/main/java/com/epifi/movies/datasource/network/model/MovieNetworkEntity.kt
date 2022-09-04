@@ -48,12 +48,6 @@ class MovieNetworkEntity(
     @SerializedName("Awards")
     var awards: String? = null
 
-    @SerializedName("Metascore")
-    var metascore: String? = null
-
-    @SerializedName("imdbRating")
-    var imdbRating: String? = null
-
     @SerializedName("imdbVotes")
     var imdbVotes: String? = null
 

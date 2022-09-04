@@ -21,7 +21,7 @@ constructor(
             searchQuery = searchQuery
         )
         println("Movies:${response.movies.size} ${response.movies}")
-        return response.movies ?: listOf()
+        return response.movies
 
     }
 }

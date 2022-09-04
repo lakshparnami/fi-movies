@@ -101,9 +101,8 @@ class MainFragment : Fragment(), NetworkObserver by NetworkObserverImpl() {
         binding.searchView.setIconifiedByDefault(false)
         binding.searchView.setOnQueryTextListener(
             DebouncingQueryTextListener(
-                viewLifecycleOwner.lifecycle,
-
-                ) {
+                viewLifecycleOwner.lifecycle
+            ) {
                 handleQuery(it)
             }
         )

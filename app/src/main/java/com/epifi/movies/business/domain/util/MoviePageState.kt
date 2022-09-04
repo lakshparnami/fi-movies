@@ -6,7 +6,6 @@ import com.epifi.movies.business.domain.models.Movie
 sealed class MoviePageState(
     val isLoading: Boolean,
     val isLastPage: Boolean,
-    val isError: Boolean,
     val error: Exception?,
     val data: List<Movie>,
     open val searchQuery: String?,
@@ -20,7 +19,6 @@ sealed class MoviePageState(
         override val searchQuery: String? = null
     ) : MoviePageState(
         data = movies,
-        isError = false,
         error = null,
         isLoading = false,
         isLastPage = _isLastPage,
@@ -29,7 +27,6 @@ sealed class MoviePageState(
 
     data class Error(val prevMovies: List<Movie>, val exception: Exception) : MoviePageState(
         data = prevMovies,
-        isError = true,
         error = exception,
         isLoading = false,
         isLastPage = true,
@@ -38,7 +35,6 @@ sealed class MoviePageState(
 
     data class EmptyState(override val searchQuery: String? = null) : MoviePageState(
         data = listOf(),
-        isError = true,
         error = Exception("No Movies found"),
         isLoading = false,
         isLastPage = true,
@@ -48,7 +44,6 @@ sealed class MoviePageState(
     data class Loading(val prevMovies: List<Movie>, override val searchQuery: String? = null) :
         MoviePageState(
             data = prevMovies,
-            isError = false,
             error = null,
             isLoading = true,
             isLastPage = false,

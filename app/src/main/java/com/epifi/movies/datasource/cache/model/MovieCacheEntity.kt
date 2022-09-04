@@ -20,7 +20,7 @@ class MovieCacheEntity(
     @ColumnInfo(name = "page")
     val pageNo: Int,
 
-    ){
+    ) {
     override fun toString(): String {
         return "MovieCacheEntity(imdbID='$imdbID', title='$title', poster='$poster', pageNo=$pageNo)"
     }

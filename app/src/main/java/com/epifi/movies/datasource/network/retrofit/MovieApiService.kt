@@ -1,8 +1,6 @@
 package com.epifi.movies.datasource.network.retrofit
 
 import com.epifi.movies.datasource.network.model.SearchResultResponse
-import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 

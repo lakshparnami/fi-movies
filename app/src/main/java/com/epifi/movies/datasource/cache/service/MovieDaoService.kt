@@ -4,7 +4,6 @@ import com.epifi.movies.datasource.cache.model.MovieCacheEntity
 
 interface MovieDaoService {
 
-
     suspend fun insert(movieEntity: MovieCacheEntity): Long
 
     suspend fun insertAll(movies: List<MovieCacheEntity>): List<Long>

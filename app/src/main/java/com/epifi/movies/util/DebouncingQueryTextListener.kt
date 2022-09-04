@@ -11,7 +11,7 @@ class DebouncingQueryTextListener(
     private val onDebouncingQueryTextChange: (String?) -> Unit
 ) : SearchView.OnQueryTextListener, LifecycleEventObserver {
 
-    var debouncePeriod: Long = 500
+    private var debouncePeriod: Long = 500
 
     private val coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main)
 
