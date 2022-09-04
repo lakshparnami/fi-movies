@@ -93,7 +93,7 @@ class MainFragment : Fragment(), NetworkObserver by NetworkObserverImpl() {
     }
 
     private fun updateRecyclerView(movies: List<Movie>) {
-        (binding.movieRecyclerView.adapter as? MovieListRecyclerAdapter)?.updateList(movies)
+        (binding.content.movieRecyclerView.adapter as? MovieListRecyclerAdapter)?.updateList(movies)
     }
 
     private fun initSearchView() {
@@ -112,10 +112,10 @@ class MainFragment : Fragment(), NetworkObserver by NetworkObserverImpl() {
     private fun initRecyclerView() {
 
         val moviesAdapter = MovieListRecyclerAdapter()
-        binding.movieRecyclerView.adapter = moviesAdapter
+        binding.content.movieRecyclerView.adapter = moviesAdapter
         val layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
-        binding.movieRecyclerView.layoutManager = layoutManager
-        binding.movieRecyclerView.addOnScrollListener(object :
+        binding.content.movieRecyclerView.layoutManager = layoutManager
+        binding.content.movieRecyclerView.addOnScrollListener(object :
             PaginationScrollListener(layoutManager) {
             override fun loadMoreItems() {
                 val query = viewModel.dataState.value?.searchQuery
@@ -130,16 +130,15 @@ class MainFragment : Fragment(), NetworkObserver by NetworkObserverImpl() {
     }
 
     private fun displayProgressBar(isDisplayed: Boolean) {
-        binding.progressBar.visibility = if (isDisplayed) View.VISIBLE else View.GONE
+        binding.loading.root.visibility = if (isDisplayed) View.VISIBLE else View.GONE
     }
 
 
     private fun displayError(isDisplayed: Boolean, message: String? = null) {
-        binding.errorView.visibility = if (isDisplayed) View.VISIBLE else View.GONE
-        binding.errorMessage.visibility = if (isDisplayed) View.VISIBLE else View.GONE
+        binding.error.root.visibility = if (isDisplayed) View.VISIBLE else View.GONE
         if (isDisplayed) {
-            if (message != null) binding.errorMessage.text = message
-            else binding.errorMessage.setText(R.string.unknown_error)
+            if (message != null) binding.error.errorMessage.text = message
+            else binding.error.errorMessage.setText(R.string.unknown_error)
         }
     }
 
