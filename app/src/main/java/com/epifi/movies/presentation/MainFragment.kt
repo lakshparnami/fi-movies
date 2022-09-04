@@ -15,13 +15,18 @@ import com.epifi.movies.datasource.cache.dao.MovieDao
 import com.epifi.movies.presentation.recyclerview.MovieListRecyclerAdapter
 import com.epifi.movies.presentation.recyclerview.PaginationScrollListener
 import com.epifi.movies.util.DebouncingQueryTextListener
+import com.epifi.movies.util.networkObserver.NetworkObserver
+import com.epifi.movies.util.networkObserver.NetworkObserverImpl
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 
+
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), NetworkObserver by NetworkObserverImpl() {
+
 
     private val viewModel: MainViewModel by viewModels()
     private var _binding: FragmentMainBinding? = null
@@ -29,6 +34,25 @@ class MainFragment : Fragment() {
 
     @Inject
     lateinit var movieDao: MovieDao
+    override fun onStart() {
+        super.onStart()
+        context?.let {
+            registerNetworkObserver(
+                it,
+                this,
+                onAvailable = { onNetworkAvailable() },
+                onLost = { onNetworkLost() },
+            )
+        }
+    }
+
+    private fun onNetworkAvailable() {
+        Snackbar.make(binding.root, "Network Available", Snackbar.LENGTH_SHORT).show()
+    }
+
+    private fun onNetworkLost() {
+        Snackbar.make(binding.root, "Network Lost", Snackbar.LENGTH_INDEFINITE).show()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
