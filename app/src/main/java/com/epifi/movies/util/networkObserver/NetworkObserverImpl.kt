@@ -14,7 +14,7 @@ class NetworkObserverImpl : NetworkObserver, LifecycleEventObserver {
     private lateinit var networkCallback: ConnectivityManager.NetworkCallback
     private lateinit var context: Context
     private val mNetworkRequest: NetworkRequest by lazy { getNetworkRequest() }
-
+    private var updateNetworkStatus = false
     override fun registerNetworkObserver(
         context: Context,
         lifecycleOwner: LifecycleOwner,
@@ -64,12 +64,14 @@ class NetworkObserverImpl : NetworkObserver, LifecycleEventObserver {
         return object : ConnectivityManager.NetworkCallback() {
             override fun onAvailable(network: Network) {
                 super.onAvailable(network)
-                onAvailable()
+                if (updateNetworkStatus)
+                    onAvailable()
             }
 
             override fun onLost(network: Network) {
                 super.onLost(network)
                 onLost()
+                updateNetworkStatus = true
             }
 
         }
