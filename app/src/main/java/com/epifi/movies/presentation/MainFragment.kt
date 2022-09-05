@@ -11,7 +11,6 @@ import com.epifi.movies.R
 import com.epifi.movies.business.domain.models.Movie
 import com.epifi.movies.business.domain.util.MoviePageState
 import com.epifi.movies.databinding.FragmentMainBinding
-import com.epifi.movies.datasource.cache.dao.MovieDao
 import com.epifi.movies.presentation.recyclerview.MovieListRecyclerAdapter
 import com.epifi.movies.presentation.recyclerview.PaginationScrollListener
 import com.epifi.movies.util.DebouncingQueryTextListener
@@ -20,7 +19,6 @@ import com.epifi.movies.util.networkObserver.NetworkObserverImpl
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import javax.inject.Inject
 
 
 @ExperimentalCoroutinesApi
@@ -32,8 +30,6 @@ class MainFragment : Fragment(), NetworkObserver by NetworkObserverImpl() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var movieDao: MovieDao
     override fun onStart() {
         super.onStart()
         context?.let {
